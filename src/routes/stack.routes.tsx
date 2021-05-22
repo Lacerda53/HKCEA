@@ -4,6 +4,8 @@ import colors from "../styles/colors";
 import { Welcome } from "../pages/Welcome";
 import { Register } from "../pages/Register";
 import { CompleteRegister } from "../pages/CompleteRegister";
+import { BottomNavigationRoutes } from "./bottomNav.routes";
+import { MakeAppointment } from "../pages/MakeAppointment";
 
 const StackRoutes = createStackNavigator();
 
@@ -23,6 +25,8 @@ export default function AppRoutes() {
         name="CompleteRegister"
         component={CompleteRegister}
       />
+      <StackRoutes.Screen name="Home" component={BottomNavigationRoutes} />
+      <StackRoutes.Screen name="MakeAppointment" component={MakeAppointment} />
     </StackRoutes.Navigator>
   );
 }

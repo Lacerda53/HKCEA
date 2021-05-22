@@ -18,7 +18,7 @@ export function CompleteRegister() {
   const [currentPage, setCurrentPage] = useState<number>(0);
 
   const forms = [
-    <View style={styles.form}>
+    <View>
       <Input title="Nome Completo" required placeholder="Ex. Nome Sobrenome" />
       <Input title="RG" required placeholder="9999999" />
       <Input
@@ -31,7 +31,7 @@ export function CompleteRegister() {
       <Input title="plano de saude" placeholder="9999999" />
       <Input title="n° da carteira plano de saúde" placeholder="9999999" />
     </View>,
-    <View style={styles.form}>
+    <View>
       <Input title="cep" required placeholder="Ex. 99999-999" />
       <Input title="endereço" required placeholder="9999999" />
       <Input
