@@ -11,9 +11,16 @@ import colors from "../styles/colors";
 import image from "../assets/congratulations.png";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/core";
+import { useTime } from "../context/timeContext";
 
 export function Congratulations() {
   const navigation = useNavigation();
+  const { setTime } = useTime();
+
+  function handleNext() {
+    setTime(true);
+    navigation.navigate("Home");
+  }
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
@@ -22,10 +29,7 @@ export function Congratulations() {
       </Text>
       <Image source={image} style={styles.img} />
       <View style={styles.footer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Home", { queue: true })}
-        >
+        <TouchableOpacity style={styles.button} onPress={handleNext}>
           <Text style={styles.textButton}>Voltar</Text>
         </TouchableOpacity>
       </View>

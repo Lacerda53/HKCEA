@@ -86,23 +86,17 @@ export function MakeAppointment() {
       </TouchableOpacity>
     </View>,
     //page2
-    <View style={{ marginTop: 10, marginBottom: 100 }}>
-      <FlatList
-        data={typeAttendance}
-        key={typeAttendance.length}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            key={item.id}
-            style={styles.row}
-            onPress={() => setCurrentPage(2)}
-          >
-            <Text style={styles.rowText}>{item.title}</Text>
-            <Feather name="chevron-right" size={24} color={colors.primary} />
-          </TouchableOpacity>
-        )}
-      />
+    <View style={{ marginTop: 10, marginBottom: 30 }}>
+      {typeAttendance.map((item) => (
+        <TouchableOpacity
+          key={item.id}
+          style={styles.row}
+          onPress={() => setCurrentPage(2)}
+        >
+          <Text style={styles.rowText}>{item.title}</Text>
+          <Feather name="chevron-right" size={24} color={colors.primary} />
+        </TouchableOpacity>
+      ))}
     </View>,
     //page3
     <View style={{ marginTop: 10, marginBottom: 100 }}>
@@ -146,24 +140,22 @@ export function MakeAppointment() {
     </View>,
     //page4
     <View style={{ marginTop: 30, marginBottom: 100 }}>
-      <ScrollView>
-        <CalendarCustom />
-        <Text style={styles.textTime}>Horários</Text>
-        <View style={styles.containerRow}>
-          <TouchableOpacity
-            style={styles.cardTime}
-            onPress={() => navigation.navigate("Congratulations")}
-          >
-            <Text style={styles.cardText}>08:00 - 08:30</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.cardTime}
-            onPress={() => navigation.navigate("Congratulations")}
-          >
-            <Text style={styles.cardText}>14:00 - 14:30</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+      <CalendarCustom />
+      <Text style={styles.textTime}>Horários</Text>
+      <View style={styles.containerRow}>
+        <TouchableOpacity
+          style={styles.cardTime}
+          onPress={() => navigation.navigate("Congratulations")}
+        >
+          <Text style={styles.cardText}>08:00 - 08:30</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.cardTime}
+          onPress={() => navigation.navigate("Congratulations")}
+        >
+          <Text style={styles.cardText}>14:00 - 14:30</Text>
+        </TouchableOpacity>
+      </View>
     </View>,
   ];
 
@@ -183,7 +175,9 @@ export function MakeAppointment() {
         </TouchableOpacity>
         {headers[currentPage]}
       </View>
-      <View>{body[currentPage]}</View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View>{body[currentPage]}</View>
+      </ScrollView>
       <View style={styles.footer}>
         <Text style={styles.textFooter}>
           Passo <Text style={styles.Textnegrito}>{currentPage + 1}</Text> de 4
