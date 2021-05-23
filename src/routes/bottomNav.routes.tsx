@@ -4,6 +4,7 @@ import { Home } from "../pages/Home";
 import { AntDesign } from "@expo/vector-icons";
 import colors from "../styles/colors";
 import { Profile } from "../pages/Profile";
+import { Schedule } from "../pages/Schedule";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -25,14 +26,14 @@ export function BottomNavigationRoutes() {
         component={Home}
       />
       <Tab.Screen
-        name="schedule"
+        name="Schedule"
         options={{
           tabBarLabel: "Agenda",
           tabBarIcon: ({ color }) => (
             <AntDesign name="calendar" size={26} color={color} />
           ),
         }}
-        component={Home}
+        component={Schedule}
       />
       <Tab.Screen
         options={{

@@ -8,10 +8,13 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Platform,
+  ScrollView,
 } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
-import { typeAttendance } from "../helpers/typeattendance";
+import { typeAttendance } from "../helpers/typeAttendance";
 import colors from "../styles/colors";
+import { CalendarCustom } from "../components/CalendarCustom";
 
 export function MakeAppointment() {
   const [currentPage, setCurrentPage] = useState<number>(0);
@@ -141,6 +144,27 @@ export function MakeAppointment() {
         />
       </TouchableOpacity>
     </View>,
+    //page4
+    <View style={{ marginTop: 30, marginBottom: 100 }}>
+      <ScrollView>
+        <CalendarCustom />
+        <Text style={styles.textTime}>Horários</Text>
+        <View style={styles.containerRow}>
+          <TouchableOpacity
+            style={styles.cardTime}
+            onPress={() => navigation.navigate("Congratulations")}
+          >
+            <Text style={styles.cardText}>08:00 - 08:30</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.cardTime}
+            onPress={() => navigation.navigate("Congratulations")}
+          >
+            <Text style={styles.cardText}>14:00 - 14:30</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </View>,
   ];
 
   function handleBack() {
@@ -159,7 +183,7 @@ export function MakeAppointment() {
         </TouchableOpacity>
         {headers[currentPage]}
       </View>
-      <View style={styles.body}>{body[currentPage]}</View>
+      <View>{body[currentPage]}</View>
       <View style={styles.footer}>
         <Text style={styles.textFooter}>
           Passo <Text style={styles.Textnegrito}>{currentPage + 1}</Text> de 4
@@ -179,7 +203,28 @@ const styles = StyleSheet.create({
   header: {
     marginTop: 20,
   },
-  body: {},
+  containerRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  textTime: {
+    fontSize: 20,
+    color: colors.text,
+    fontWeight: "bold",
+  },
+  cardTime: {
+    marginTop: 10,
+    backgroundColor: colors.primary,
+    width: "47%",
+    padding: 20,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cardText: {
+    color: colors.white,
+    fontSize: 16,
+  },
   row: {
     flexDirection: "row",
     justifyContent: "space-between",

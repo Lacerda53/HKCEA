@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   Text,
@@ -11,12 +11,14 @@ import {
 import colors from "../styles/colors";
 import home1Img from "../assets/home1.png";
 import home2Img from "../assets/home2.png";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Platform } from "react-native";
-import { useNavigation } from "@react-navigation/core";
+import { useNavigation, useRoute } from "@react-navigation/core";
 
 export function Home() {
   const navigation = useNavigation();
+  const { params } = useRoute<any>();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -51,6 +53,7 @@ export function Home() {
               backgroundColor: colors.white,
             },
           ]}
+          onPress={() => navigation.navigate("Schedule")}
         >
           <Image source={home2Img} style={styles.img} />
           <View style={styles.content}>
@@ -86,14 +89,13 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     color: colors.base,
-    fontSize: 16,
+    fontSize: 18,
   },
   scroll: {
     paddingHorizontal: 15,
   },
   body: {
     flex: 1,
-    marginTop: 10,
   },
   cardMain: {
     borderRadius: 10,
@@ -150,5 +152,35 @@ const styles = StyleSheet.create({
   icon: {
     fontSize: 25,
     color: colors.white,
+  },
+  card: {
+    width: "100%",
+    padding: 15,
+    marginTop: 25,
+    borderWidth: 1,
+    borderColor: "#CDCDCD",
+    borderRadius: 10,
+  },
+  cardText: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 15,
+    borderBottomWidth: 1,
+    borderColor: colors.gray,
+  },
+  cardSubText: {
+    marginLeft: 10,
+  },
+  containerCancel: {
+    marginTop: 30,
+    alignItems: "flex-end",
+  },
+  textCancel: {
+    color: colors.red,
+    fontSize: 16,
   },
 });

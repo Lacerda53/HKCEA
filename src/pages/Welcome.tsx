@@ -20,7 +20,7 @@ export function Welcome() {
       <View style={styles.wrapper}>
         <Text style={styles.title}>
           Diminua o fluxo de {"\n"}filas com o{" "}
-          <Text style={styles.titleName}>NOME</Text>
+          <Text style={styles.titleName}>Fila Certa</Text>
         </Text>
         <Image source={welcomeImg} style={styles.image} resizeMode="contain" />
       </View>
